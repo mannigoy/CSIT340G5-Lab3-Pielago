@@ -1,54 +1,97 @@
 const Header = (props) => {
-  return (
-    <h1>{props.course}</h1>
-  )
+  return <h1>{props.course.name}</h1>
 }
 
 const Part = (props) => {
   return (
     <p>
-      {props.name} {props.exercises}
+      {props.part.courseCode} {props.part.name} {props.part.unitCount}
     </p>
   )
 }
 
 const Content = (props) => {
   return (
-    <div>
-      <Part name={props.part1} exercises={props.exercises1} />
-      <Part name={props.part2} exercises={props.exercises2} />
-      <Part name={props.part3} exercises={props.exercises3} />
+  <div>
+      {props.course.parts.map((part, index) => (
+        <Part key={index} part={part} />
+      ))}
     </div>
   )
 }
 
 const Total = (props) => {
-  return (
-    <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
-  )
+  const total =
+    props.course.parts[0].unitCount +
+    props.course.parts[1].unitCount +
+    props.course.parts[2].unitCount
+
+  return <p>Number of unit Count {total}</p>
 }
 
 const App = () => {
-  const course = 'Industrty Elective 1'
-  const part1 = 'CSIT340'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const course = {
+    name: 'Bachelor of Science in Information Technology',
+    parts: [
+  
+    {
+      courseCode: 'CSIT340',
+      name: 'Industry Elective 1',
+      unitCount: 3
+    },
+    {
+      courseCode: 'CSIT349',
+      name: 'Applied AI',
+      unitCount: 3
+    },
+    {
+      courseCode: 'CSIT349',
+      name: 'Applied AI',
+      unitCount: 3
+    },
+    {
+      courseCode: 'ES038',
+      name: 'Technopreneurship',
+      unitCount: 3
+    },
+    {
+      courseCode: 'IT228',
+      name: 'Networking 2',
+      unitCount: 3
+    },
+    {
+      courseCode: 'IT228',
+      name: 'Networking 2',
+      unitCount: 3
+    },
+    {
+      courseCode: 'IT332',
+      name: 'Capstone and Research 1',
+      unitCount: 3
+    },
+    {
+      courseCode: 'IT334',
+      name: 'IS Strategy',
+      unitCount: 3
+    },
+    {
+      courseCode: 'IT342',
+      name: 'Systems Integration and Architecture 1',
+      unitCount: 3
+    },
+    {
+      courseCode: 'IT342',
+      name: 'Systems Integration and Architecture 1',
+      unitCount: 3
+    }
+    ]
+  }
 
   return (
     <div>
       <Header course={course} />
-      <Content
-        part1={part1}
-        exercises1={exercises1}
-        part2={part2}
-        exercises2={exercises2}
-        part3={part3}
-        exercises3={exercises3}
-      />
-      <Total exercises1={exercises1} exercises2={exercises2} exercises3={exercises3} />
+      <Content course={course} />
+      <Total course={course} />
     </div>
   )
 }
