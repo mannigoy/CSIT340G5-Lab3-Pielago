@@ -1,0 +1,47 @@
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f7f7f7;
+  color: #222;
+  margin: 0;
+  padding: 2rem;
+}
+
+
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.part {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+ 
+  font-size: 0.95rem;
+}
+
+.code {
+  color: #888;
+  width: 90px;
+}
+
+.name {
+  flex: 1;
+  text-align: left;
+}
+
+.units {
+  font-weight: bold;
+  width: 30px;
+  text-align: right;
+}
+
+.total {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-align: right;
+}
